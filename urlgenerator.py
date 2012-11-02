@@ -22,7 +22,7 @@ def GenericSites():
 ##### Earmilk #####
 
 def wwWednesday():
-    'Today is Wednesday!'
+    print 'Today is Wednesday!'
     wwcount = open(str(Mp3Crawl_dir)+'/wwCount.txt', "r")
     #ww.write(wwcount+1)
     wwnumber = wwcount.readline()
@@ -46,7 +46,7 @@ def wwWednesday():
     wwcount.close()
 
 def ssSunday():
-    'Today is Sunday!'
+    print 'Today is Sunday!'
     #open text file that contains the count of the current Suicide Sunday (>109)
     sscount = open(str(Mp3Crawl_dir) + "/ssCount.txt", "r")
     #ww.write(wwcount+1)
@@ -67,14 +67,38 @@ def ssSunday():
     sscount.write(str(ssnumber))
     sscount.close()
 
+def ssMonday():
+    print 'Today is Monday!'
+    #open text file that contains the count of the current Suicide Sunday (>109)
+    mmcount = open(str(Mp3Crawl_dir) + "/mmCount.txt", "r")
+    
+    mmnumber = mmcount.readline()
+    mmcount.close()
+    url = 'http://www.earmilk.com/' + str(today.year) + '/' + str(today.month) + '/' + str(today.day) + '/mashup-monday-week-' +  str(mmnumber) + '/'
+    print url
+    
+    #actually start downloading music
+    #if grab_music() doesn't finds 0 songs it will return a 0
+
+    musiccrawler.grab_music(url)
+
+    mmcount = open(str(Mp3Crawl_dir) + "/mmCount.txt", "w+")
+    mmnumber = int(mmnumber) + 1
+    print 'currently on MashupMonday #' + str(mmnumber)
+    print 'saving number to mmCount.txt...'
+    mmcount.write(str(mmnumber))
+    mmcount.close()
+
+def Daily2Percent:
+    #need to figure out how to grab these urls from the homepage, they don't follow a straightforward pattern due to the song title being in the URL 
 
 
 if weekday == 3: #Wednesday
     wwWednesday()
     
     
-#elif weekday == 0: #Monday
+elif weekday == 0: #Monday
 
 
-elif weekday == 7:  #7 equals sunday
+elif weekday == 7:  #7 equals Sunday
     ssSunday()
