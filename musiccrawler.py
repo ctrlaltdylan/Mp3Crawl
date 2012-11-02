@@ -9,15 +9,27 @@ os.chdir(Mp3Crawl_dir)
 print 'Musiccrawler.py loaded'
 
 
-def check_for_songs(url):
+def create_song_list(url):
+    page = urllib.urlopen(url).read()
+    print 'Compiling List...'
+    songs = re.findall(r'href=[\'"]?([^\'" >]+.mp3)', page)
+    
+    
+
+def find_songs(url):
     page = urllib.urlopen(url).read()
     print "Page retrieved succesfully"
+    print "are songs present?.."
     songs = re.findall(r'href=[\'"]?([^\'" >]+.mp3)', page)
+    method2 = re.findall(r'href=[\'"]?([^\'" >]+/download)', page)
+    for song in method2:
+        songs.append(song)
     print str(len(songs)) + " songs found"
     if len(songs) == 0:
         return False
     else:
-        return True
+        print "Yes, songs are here"
+        return songs
     
 
 
@@ -32,15 +44,12 @@ def changefilename(song): #module to change the filename of the mp3 when it's fi
 
 
 def grab_music(url):
-    if check_for_songs(url) is False:
+    songs = find_songs(url)
+    if songs is False:
         return False
     else:
         os.chdir(Music_dir)
-        title = 21   #iteration used to name the files when they are downloading, once they are finished, then changefilename() will be used to change to the actual name
-        page = urllib.urlopen(url).read()
-        print "Page retrieved succesfully"
-        songs = re.findall(r'href=[\'"]?([^\'" >]+.mp3)', page)
-
+        title = 'Current_Download'   #iteration used to name the files when they are downloading, once they are finished, then changefilename() will be used to change to the actual name
         for song in songs:
          #experiment with filename
             file_name = str(title) + ".mp3"  #song.split('/')[-1]
