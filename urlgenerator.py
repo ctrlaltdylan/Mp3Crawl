@@ -1,7 +1,7 @@
 
 import urllib, datetime, os, musiccrawler, re, csv, random, urllib2, eyed3
 today = datetime.datetime.today()       #set global time
-print 'url generator'
+print 'Url Generator Loaded'
 weekday = today.isoweekday()  #returns an integer corresponding with the weekday, 1 == Monday etc. etc.
 ####### Variables ######
 Mp3Crawl_dir = '/Users/Pierce/Mp3Crawl'
@@ -12,7 +12,7 @@ Music_dir = '/Users/Pierce/Music/Captured'
 def GenericSites():
     #no good list
     #Beathau5.com
-    urls = ['http://www.chubbybeavers.com/','http://bacauhousemafia.ro/']
+    urls = ['http://www.chubbybeavers.com/','http://bacauhousemafia.ro/','http://www.thissongissick.com','http://www.controlaltdelight.com/']
     for url in urls:
         musiccrawler.grab_music(url)
 
@@ -89,16 +89,19 @@ def ssMonday():
     mmcount.write(str(mmnumber))
     mmcount.close()
 
-def Daily2Percent:
+#def Daily2Percent():
     #need to figure out how to grab these urls from the homepage, they don't follow a straightforward pattern due to the song title being in the URL 
-
 
 if weekday == 3: #Wednesday
     wwWednesday()
     
+
     
-elif weekday == 0: #Monday
+elif weekday == 4: #Monday
+    mmMonday()
+    
 
 
 elif weekday == 7:  #7 equals Sunday
     ssSunday()
+    

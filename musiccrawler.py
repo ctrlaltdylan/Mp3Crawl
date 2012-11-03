@@ -54,7 +54,9 @@ def grab_music(url):
          #experiment with filename
             file_name = str(title) + ".mp3"  #song.split('/')[-1]
             u = urllib2.urlopen(song)
+            mp3_data = u.read()
             f = open(file_name, 'wb')
+            f.write(mp3_data)
         #script to display download progress#
             meta = u.info()
             file_size = int(meta.getheaders("Content-Length")[0])
@@ -72,8 +74,7 @@ def grab_music(url):
                 print status,
 
             f.close()
-            #title iteration
-            title = title + 1
+            
             #call to change the file name from arbitiary number to actual song name
             changefilename(file_name)
 
