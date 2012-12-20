@@ -12,8 +12,18 @@ Music_dir = '/Users/Pierce/Music/Captured'
 def GenericSites():
     #no good list
     #Beathau5.com
-    urls = ['http://www.chubbybeavers.com/','http://bacauhousemafia.ro/','http://www.thissongissick.com','http://www.controlaltdelight.com/']
+    urls = ['http://louislouisblog.co.uk/',
+            'http://www.chubbybeavers.com/',
+            'http://bacauhousemafia.ro/',
+            'http://www.thissongissick.com',
+            'http://www.controlaltdelight.com/',
+            'http://www.remix86.com',
+            'http://www.whatsfordinna.net/',
+            'http://www.discobelle.net/',
+            'http://www.zaberriders.com/',
+            'http://www.musicformorons.com/']
     for url in urls:
+        print url + " is loaded"
         musiccrawler.grab_music(url)
 
 ##### Thissongissick #####
@@ -91,6 +101,8 @@ def ssMonday():
 
 #def Daily2Percent():
     #need to figure out how to grab these urls from the homepage, they don't follow a straightforward pattern due to the song title being in the URL 
+GenericSites()
+
 
 if weekday == 3: #Wednesday
     wwWednesday()
@@ -104,4 +116,4 @@ elif weekday == 4: #Monday
 
 elif weekday == 7:  #7 equals Sunday
     ssSunday()
-    
+
